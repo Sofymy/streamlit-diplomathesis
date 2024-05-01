@@ -1,6 +1,7 @@
 import streamlit as st
 from google.cloud import firestore
 import pandas as pd
+from google.oauth2 import service_account
 import numpy as np
 import altair as alt
 import json
@@ -102,7 +103,7 @@ class FirestoreDataRetriever:
 
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="streamlit-reddit")
+db = firestore.Client(credentials=creds)
 
 # Create an instance of FirestoreDataRetriever
 option = st.selectbox(
