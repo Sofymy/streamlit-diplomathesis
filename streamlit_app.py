@@ -3,6 +3,7 @@ from google.cloud import firestore
 import pandas as pd
 import numpy as np
 import altair as alt
+import json
 
 st.header('Insights into user preferences')
 
@@ -98,7 +99,7 @@ class FirestoreDataRetriever:
 
 # Authenticate to Firestore with the JSON account key.
 # db = firestore.Client.from_service_account_json("firebase-key.json")
-import json
+
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="streamlit-reddit")
